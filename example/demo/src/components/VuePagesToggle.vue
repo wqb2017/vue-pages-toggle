@@ -37,6 +37,7 @@
   vertical-align: middle;
   text-align: center;
   letter-spacing: 0.2rem;
+  font-size: 18px;
 }
 
 .demo1 {
