@@ -1,18 +1,19 @@
 # vue-pages-toggle
 
-> A Vue.js project
+> 基于 vue 的页面轮播
 
-## Build Setup
+## api
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+```js
+@param {String} position 定位，默认定位上面
+@param {Boolean} isPagesKeys 是否显示keys，默认显示
+@param {Object, Array} pagesKeysStyle keys样式
+@param {Object, Array} pagesKeysActiveStyle keys选中样式
+@param {Boolean} isUseKeydown 是否启动键盘事件,默认不启动
+@param {Number} swipeTime 轮播时间，默认2000ms
+@param {Function} success 轮播成功回调
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## example
+
+![](./example/demo.gif)

@@ -10,7 +10,7 @@ export default {
     position: {
       type: String,
       default() {
-        return 'top';
+        return 'right';
       }
     },
     //keys样式
@@ -20,6 +20,20 @@ export default {
     //keys选中样式
     pagesKeysActiveStyle: {
       type: [Object, Array]
+    },
+    //是否启动键盘事件,默认不启动
+    isUseKeydown: {
+      type: Boolean,
+      default() {
+        return false;
+      }
+    },
+    //轮播时间
+    swipeTime: {
+      type: Number,
+      default() {
+        return 2000;
+      }
     }
   },
   data() {
@@ -27,7 +41,6 @@ export default {
       keysCount: 0,//key个数
       selected: 0,//当前选中节点
       timer: null,//定时器
-      time: 2000,//定时器轮播时间
     }
   },
   mounted() {
@@ -38,7 +51,9 @@ export default {
     //获取panel元素节点个数
     this.keysCount = panelElement.length;
     this._swipe();
-    document.addEventListener('keydown', this._keydown);
+    if (this.isUseKeydown) {
+      document.addEventListener('keydown', this._keydown);
+    }
   },
   beforeDestroy() {
     document.removeEventListener('keydown', this._keydown);
@@ -50,7 +65,7 @@ export default {
       this._toggle(this.selected, null);
       this.timer = setTimeout(() => {
         this._goSwipe();
-      }, this.time);
+      }, this.swipeTime);
     },
     //向前轮播
     _goSwipe() {

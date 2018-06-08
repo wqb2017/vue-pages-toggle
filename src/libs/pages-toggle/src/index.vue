@@ -30,6 +30,14 @@ export default {
     //keys选中样式
     pagesKeysActiveStyle: {
       type: [Object, Array]
+    },
+    //是否启动键盘事件
+    isUseKeydown: {
+      type: Boolean
+    },
+    //轮播时间
+    swipeTime: {
+      type: Number
     }
   },
   components: {
@@ -71,6 +79,8 @@ export default {
       this.pagesBodyData.index = index;
       this.pagesBodyData.row = row;
       this._showCurrentPanel();
+      //切换回调
+      this.$emit('success', index, row);
     }
   }
 }
