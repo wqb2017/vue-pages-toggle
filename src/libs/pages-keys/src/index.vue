@@ -62,7 +62,11 @@ export default {
     //轮播
     _swipe() {
       clearTimeout(this.timer);
-      this._toggle(this.selected, null);
+      console.log('====================================');
+      console.log(new Date());
+      console.log('====================================');
+      //切换回调
+      this.$emit('toggle', this.selected);
       this.timer = setTimeout(() => {
         this._goSwipe();
       }, this.swipeTime);
@@ -94,8 +98,7 @@ export default {
     */
     _toggle(index, item) {
       this.selected = index;
-      //切换回调
-      this.$emit('toggle', index, item);
+      this._swipe(index, item);
     },
     //键盘事件
     _keydown(e) {

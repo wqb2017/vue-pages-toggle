@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <pagesToggle :pagesKeysActiveStyle="{'background':'#0f0'}" :swipeTime="5000" @success="_success">
+    <pagesToggle :pagesKeysActiveStyle="{'background':'#0f0'}" :swipeTime="3000" animationDuration="2s">
       <pagesTogglePanel>
         <div class="demo demo1">
           <h3>第1屏</h3>
@@ -35,14 +35,6 @@ export default {
   components: {
     pagesToggle,
     pagesTogglePanel
-  },
-  methods: {
-    _success(index, row) {
-      console.log('====================================');
-      console.log(index, row);
-      console.log(new Date());
-      console.log('====================================');
-    }
   }
 }
 </script>

@@ -38,6 +38,48 @@ export default {
     //轮播时间
     swipeTime: {
       type: Number
+    },
+    //动画完成时间
+    animationDuration: {
+      type: String,
+      default() {
+        return '4s';
+      }
+    },
+    //规定动画的速度曲线。
+    animationTimingFunction: {
+      type: String,
+      default() {
+        return 'linear';
+      }
+    },
+    //何时开始动画
+    animationDelay: {
+      type: String,
+      default() {
+        return '0s';
+      }
+    },
+    //设置或返回动画的播放次数
+    animationIterationCount: {
+      type: Number,
+      default() {
+        return 1;
+      }
+    },
+    //设置或返回是否循环交替反向播放动画
+    animationDirection: {
+      type: String,
+      default() {
+        return 'normal';
+      }
+    },
+    //属性规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式
+    animationFillMode: {
+      type: String,
+      default() {
+        return 'none';
+      }
     }
   },
   components: {
@@ -52,9 +94,6 @@ export default {
       }
     }
   },
-  mounted() {
-    this._showCurrentPanel();
-  },
   methods: {
     /**
     * 显示对应内容
@@ -67,6 +106,12 @@ export default {
         //当前panel和对应keys相等则显示
         if (i === this.pagesBodyData.index) {
           panelElement[this.pagesBodyData.index].style.display = 'block';
+          panelElement[this.pagesBodyData.index].style.animationDuration = this.animationDuration;
+          panelElement[this.pagesBodyData.index].style.animationTimingFunction = this.animationTimingFunction;
+          panelElement[this.pagesBodyData.index].style.animationDelay = this.animationDelay;
+          panelElement[this.pagesBodyData.index].style.animationIterationCount = this.animationIterationCount;
+          panelElement[this.pagesBodyData.index].style.animationDirection = this.animationDirection;
+          panelElement[this.pagesBodyData.index].style.animationFillMode = this.animationFillMode;
         }
       }
     },
@@ -75,12 +120,12 @@ export default {
      * @param {number} index 当前选中节点
      * @param {object} row 当前选中节点信息
      */
-    _toggle(index, row) {
+    _toggle(index) {
+      // console.log(this);
       this.pagesBodyData.index = index;
-      this.pagesBodyData.row = row;
       this._showCurrentPanel();
       //切换回调
-      this.$emit('success', index, row);
+      this.$emit('success', index);
     }
   }
 }
