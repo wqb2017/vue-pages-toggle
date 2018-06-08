@@ -62,9 +62,6 @@ export default {
     //轮播
     _swipe() {
       clearTimeout(this.timer);
-      console.log('====================================');
-      console.log(new Date());
-      console.log('====================================');
       //切换回调
       this.$emit('toggle', this.selected);
       this.timer = setTimeout(() => {
