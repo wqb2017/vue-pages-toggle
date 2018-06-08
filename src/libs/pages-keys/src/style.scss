@@ -1,0 +1,51 @@
+@mixin active {
+  font-weight: 600;
+}
+
+.pages-keys {
+  position: fixed;
+  clear: both;
+  &_item {
+    margin: 5px;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ccc;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    &:hover {
+      @include active;
+    }
+    &.is-active {
+      @include active;
+    }
+  }
+  &.top {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    .pages-keys_item {
+      float: left;
+    }
+  }
+  &.bottom {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    .pages-keys_item {
+      float: left;
+    }
+  }
+  &.left {
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+  }
+  &.right {
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+}
