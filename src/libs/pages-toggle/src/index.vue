@@ -106,13 +106,19 @@ export default {
         //当前panel和对应keys相等则显示
         if (i === this.pagesBodyData.index) {
           panelElement[this.pagesBodyData.index].style.display = 'block';
-          panelElement[this.pagesBodyData.index].style.animationDuration = this.animationDuration;
-          panelElement[this.pagesBodyData.index].style.animationTimingFunction = this.animationTimingFunction;
-          panelElement[this.pagesBodyData.index].style.animationDelay = this.animationDelay;
-          panelElement[this.pagesBodyData.index].style.animationIterationCount = this.animationIterationCount;
-          panelElement[this.pagesBodyData.index].style.animationDirection = this.animationDirection;
-          panelElement[this.pagesBodyData.index].style.animationFillMode = this.animationFillMode;
+          this._setAnimation(panelElement[this.pagesBodyData.index]);
         }
+      }
+    },
+    //设置动画
+    _setAnimation(elm) {
+      if (elm) {
+        elm.style.animationDuration = this.animationDuration;
+        elm.style.animationTimingFunction = this.animationTimingFunction;
+        elm.style.animationDelay = this.animationDelay;
+        elm.style.animationIterationCount = this.animationIterationCount;
+        elm.style.animationDirection = this.animationDirection;
+        elm.style.animationFillMode = this.animationFillMode;
       }
     },
     /**
@@ -121,7 +127,6 @@ export default {
      * @param {object} row 当前选中节点信息
      */
     _toggle(index) {
-      // console.log(this);
       this.pagesBodyData.index = index;
       this._showCurrentPanel();
       //切换回调
