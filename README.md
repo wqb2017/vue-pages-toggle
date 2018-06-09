@@ -3,6 +3,7 @@
 > 基于 vue 的页面轮播
 
 ## example
+[在线demo](https://wqb2017.github.io/vue-pages-toggle/)
 
 ![](./example/demo.gif)
 
